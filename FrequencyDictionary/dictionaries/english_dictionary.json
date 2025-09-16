@@ -31825,7 +31825,6 @@
     "foreword": 8,
     "multiple-choice": 1,
     "selleck": 1,
-    "fathersingingdrunkenly": 1,
     "dewdrops": 1,
     "yoga-practicing": 1,
     "drenched": 2,
@@ -32155,7 +32154,6 @@
     "circusmusic": 1,
     "acrobats": 1,
     "momentous": 2,
-    "jewelryboxmusicplaying": 2,
     "seals": 39,
     "hoop": 5,
     "sealsounds": 2,
@@ -116960,6 +116958,6 @@
     "owens-illinois": 1,
     "hospice": 1
   },
-  "total_words": 3327957,
-  "unique_words": 116959
+  "total_words": 3327954,
+  "unique_words": 116957
 }
