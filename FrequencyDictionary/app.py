@@ -40,6 +40,25 @@ def interface_mode(fd: FrequencyDictionary, args):
         main_menu(fd)
 
 
+def web_mode(args):
+    """Режим веб интерфейса"""
+    try:
+        from web_app import create_web_app
+        web_app = create_web_app()
+        
+        host = getattr(args, 'host', None) or '127.0.0.1'
+        port = getattr(args, 'port', None) or 5000
+        debug = getattr(args, 'debug', False)
+        
+        web_app.run(host=host, port=port, debug=debug)
+        
+    except ImportError as e:
+        print(f"Ошибка импорта Flask: {e}")
+        print("Установите Flask: pip install flask")
+    except Exception as e:
+        print(f"Ошибка запуска веб интерфейса: {e}")
+
+
 def main_menu(fd: FrequencyDictionary):
     """Главное меню выбора языка"""
     while True:
@@ -169,6 +188,25 @@ def main():
         help=CLI_HELP['direct_language_help']
     )
     
+    # Веб режим
+    web_parser = subparsers.add_parser('web', help=CLI_HELP['web_help'])
+    web_parser.add_argument(
+        '--host',
+        default='127.0.0.1',
+        help='Хост для веб сервера (по умолчанию: 127.0.0.1)'
+    )
+    web_parser.add_argument(
+        '--port',
+        type=int,
+        default=5000,
+        help='Порт для веб сервера (по умолчанию: 5000)'
+    )
+    web_parser.add_argument(
+        '--debug',
+        action='store_true',
+        help='Режим отладки Flask'
+    )
+    
     args = parser.parse_args()
     
     # Если режим не указан, запускаем интерфейс
@@ -183,6 +221,8 @@ def main():
             create_mode(fd, args)
         elif args.mode == 'interface':
             interface_mode(fd, args)
+        elif args.mode == 'web':
+            web_mode(args)
     except KeyboardInterrupt:
         print(f"\n\n{MESSAGES['keyboard_interrupt']}")
     except Exception as e:
