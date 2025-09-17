@@ -160,14 +160,45 @@ CLI_HELP = {
 Примеры:
   python app.py create --language all          # создать все словари
   python app.py create --language russian      # создать только русский
-  python app.py interface                      # запустить интерфейс
+  python app.py interface                      # запустить консольный интерфейс
   python app.py interface --language russian   # сразу русский язык
+  python app.py web                           # запустить веб интерфейс
+  python app.py web --host 0.0.0.0 --port 8080  # веб на всех интерфейсах
     """,
     'create_help': 'Создание словарей',
-    'interface_help': 'Интерактивный режим',
+    'interface_help': 'Консольный интерактивный режим',
+    'web_help': 'Веб интерфейс (Flask)',
     'language_help': 'Язык для создания',
     'force_help': 'Пересоздать существующий словарь',
     'direct_language_help': 'Прямой запуск языка'
+}
+
+# ==================== ВЕБ ИНТЕРФЕЙС ====================
+
+WEB_CONFIG = {
+    'host': '127.0.0.1',
+    'port': 5000,
+    'debug': False,
+    'title': 'Частотный словарь'
+}
+
+WEB_MESSAGES = {
+    'page_title': 'Частотный словарь',
+    'select_language': 'Выберите язык',
+    'no_dictionaries': 'Нет доступных словарей. Создайте их сначала.',
+    'dictionary_loaded': 'Загружен словарь: {language}',
+    'operation_success': 'Операция выполнена успешно',
+    'operation_error': 'Ошибка: {error}',
+    'search_placeholder': 'Введите начало слова...',
+    'wrong_word_placeholder': 'Неправильное слово',
+    'correct_word_placeholder': 'Правильное слово', 
+    'new_word_placeholder': 'Новое слово',
+    'file_upload_label': 'Выберите .txt файл',
+    'actions': 'Действия',
+    'results': 'Результаты',
+    'no_results': 'Нет результатов',
+    'stats_block_title': 'Статистика',
+    'word_frequency': 'слово → частота'
 }
 
 # ==================== НАСТРОЙКИ ОТЛАДКИ ====================
